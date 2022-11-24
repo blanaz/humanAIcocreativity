@@ -1,0 +1,104 @@
+#This code is copied from the software's interface
+
+from ._anvil_designer import Form1Template
+from anvil import *
+import anvil.server
+import anvil.media
+
+
+class Form1(Form1Template):
+
+  def __init__(self, **properties):
+    # Set Form properties and Data Bindings.
+    self.init_components(**properties)
+
+    # Any code you write here will run when the form opens.
+
+  def text_box_1_show(self, **event_args):
+    """This method is called when the TextBox is shown on the screen"""
+    pass
+
+  def image_1_show(self, **event_args):
+    """This method is called when the Image is shown on the screen"""
+    # Call the google colab function and pass it the iris measurements
+    self.image_1.visible = True
+    pass
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    created_image = anvil.server.call('image_generation', 
+                                self.prompt.text)
+    #save image
+    #image_file_1 = anvil.BlobMedia('image',created_image, name='prompt1.png')
+    #anvil.media.download(image_file_1)
+    #created_image.save("test.png")
+    self.image_1.source = created_image
+    self.image_1_show()
+    pass
+
+  
+  def save_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.media.download(self.image_1.source)
+    pass
+
+#question two
+
+  
+  def text_box_2_show(self, **event_args):
+    """This method is called when the TextBox is shown on the screen"""
+    pass
+
+  def image_2_show(self, **event_args):
+    """This method is called when the Image is shown on the screen"""
+    # Call the google colab function and pass it the iris measurements
+    self.image_2.visible = True
+    pass
+
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    created_image_2 = anvil.server.call('image_generation', 
+                                self.prompt_2.text)
+    #img.visible = True
+    self.image_2.source = created_image_2
+    self.image_2_show()
+    pass
+
+  def save_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.media.download(self.image_2.source)
+    pass
+#question three
+
+    
+  def text_box_3_show(self, **event_args):
+    """This method is called when the TextBox is shown on the screen"""
+    pass
+
+  def image_3_show(self, **event_args):
+    """This method is called when the Image is shown on the screen"""
+    # Call the google colab function and pass it the iris measurements
+    self.image_3.visible = True
+    pass
+
+  def button_3_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    created_image_3 = anvil.server.call('image_generation', 
+                                self.prompt_3.text)
+    #img.visible = True
+    self.image_3.source = created_image_3
+    self.image_3_show()
+    pass
+
+  def save_3_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.media.download(self.image_3.source)
+    pass
+
+
+
+
+
+
+
+
